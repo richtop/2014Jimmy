@@ -8,6 +8,12 @@
 package com.team5053.frc2014;
 
 
+import com.team254.frc2014.AutoMode;
+import com.team254.frc2014.AutoModeSelector;
+import com.team254.frc2014.ChezyRobot;
+import com.team254.frc2014.paths.AutoPaths;
+import com.team254.lib.ChezyHTTPServer;
+import com.team254.frc2014.actions.Action;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -21,8 +27,15 @@ import edu.wpi.first.wpilibj.Timer;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Jimmy extends IterativeRobot {
+//RGT this is like ChezyCompetition, which is "slightly modified version of interative robot
+public class Jimmy extends /*com.team254.frc2014.*/ IterativeRobot /*implments loopable*/{
 
+  AutoMode currentAutoMode = null;
+  AutoModeSelector selector = new AutoModeSelector();
+  ChezyHTTPServer s = new ChezyHTTPServer();
+
+
+    
 // DEFINE DIGITIAL SIDE CAR CONNECTIONS    
 // Define Pulse Width Module (PWM) Connections    
     public static int PWM_LEFT_MOTOR_1   = 1;
@@ -77,14 +90,30 @@ public class Jimmy extends IterativeRobot {
                                       INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_B);
    
     public Jimmy() {
+          ChezyHTTPServer s = new ChezyHTTPServer();
     }
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+        AutoPaths.loadPaths();
+
         boolean isFirstTimeInAuton = true;
     }
+  public void autonomousInit() {
+    ChezyRobot.drivebase.resetGyro();
+    
+//RGT    ChezyRobot.shooterController.enable();
+//RGT    ChezyRobot.pinniped.setControlLoopsOff();
+    currentAutoMode = selector.currentAutoMode();
+//RGT    ChezyRobot.pinniped.doingRunning = false;
+    if (currentAutoMode != null) {
+      currentAutoMode.start();
+    }
+    System.out.println("cfs:auto_start");
+//    ChezyRobot.drivebase.setLowgear(false);
+  }
 
     /**
      * This function is called periodically during autonomous
@@ -124,5 +153,7 @@ public class Jimmy extends IterativeRobot {
     public void testPeriodic() {
     
     }
-    
+    // Added because Cheezy Poofs had it but don't think need it.
+    public void disabledPeriodic() {
+    }
 }
