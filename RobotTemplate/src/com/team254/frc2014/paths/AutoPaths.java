@@ -15,13 +15,15 @@ import java.util.Hashtable;
 public class AutoPaths {
   // Make sure these match up!
   public static final int WALL_LANE_ID = 2;
-  public final static String[] kPathNames = { "InsideLanePathFar",
+  public final static String[] kPathNames = { "RGTTry5",
+                                              "InsideLanePathFar",
                                               "CenterLanePathFar",
                                               "WallLanePath",
                                               "InsideLanePathClose", 
                                               "StraightAheadPath",
                                               };
-  public final static String[] kPathDescriptions = { "Inside, Far", 
+  public final static String[] kPathDescriptions = { "RGTTry5",
+                                                     "Inside, Far", 
                                                      "Middle Lane",
                                                      "Wall Lane",
                                                      "Inside, Close",
@@ -37,6 +39,8 @@ public class AutoPaths {
       
       TextFileReader reader = new TextFileReader("file://" + kPathNames[i] + 
               ".txt");
+      System.out.println("file://" + kPathNames[i] + ".txt");
+   
       
       Path path = deserializer.deserialize(reader.readWholeFile());
       paths_.put(kPathNames[i], path);

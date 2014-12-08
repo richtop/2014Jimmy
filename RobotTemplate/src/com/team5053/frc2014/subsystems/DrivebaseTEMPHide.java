@@ -16,25 +16,25 @@ import java.util.Hashtable;
  * This class defines the drivebase.
  * @author spinkerton
  */
-public class Drivebase extends com.team254.frc2014.subsystems.Drivebase{
+public class DrivebaseTEMPHide extends com.team254.frc2014.subsystems.Drivebase{
 
   // ticks to feet
   public final double RIGHT_ENCOCDER_TO_DISTANCE_RATIO = (3.5 * Math.PI) / (12.0 * 256.0); //TODO
   public final double LEFT_ENCOCDER_TO_DISTANCE_RATIO = (3.5 * Math.PI) / (12.0 * 256.0); //TODO
   // Speed controllers
-  private Talon leftDriveA = new Talon(Jimmy.PWM_LEFT_MOTOR_1/*RGT Constants.leftDrivePortA.getInt()*/);
-  private Talon leftDriveB = new Talon(Jimmy.PWM_LEFT_MOTOR_2/*RGT Constants.leftDrivePortB.getInt()*/);
+//RGT  private Talon leftDriveA = Jimmy.leftDriveA;//new Talon(Jimmy.PWM_LEFT_MOTOR_1/*RGT Constants.leftDrivePortA.getInt()*/);
+//RGT  private Talon leftDriveB = Jimmy.leftDriveB;//new Talon(Jimmy.PWM_LEFT_MOTOR_2/*RGT Constants.leftDrivePortB.getInt()*/);
   //RGT private Talon leftDriveC = new Talon(/*RGT Constants.leftDrivePortC.getInt()*/);
-  private Talon rightDriveA = new Talon(Jimmy.PWM_RIGHT_MOTOR_1/*RGT Constants.rightDrivePortA.getInt()*/);
-  private Talon rightDriveB = new Talon(Jimmy.PWM_RIGHT_MOTOR_2/*RGT Constants.rightDrivePortB.getInt()*/);
+//RGT  private Talon rightDriveA = Jimmy.rightDriveA;//new Talon(Jimmy.PWM_RIGHT_MOTOR_1/*RGT Constants.rightDrivePortA.getInt()*/);
+//RGT  private Talon rightDriveB = Jimmy.rightDriveB;//new Talon(Jimmy.PWM_RIGHT_MOTOR_2/*RGT Constants.rightDrivePortB.getInt()*/);
   //RGT private Talon rightDriveC = new Talon(/*RGT Constants.rightDrivePortC.getInt()*/);
   //Encoders
-  private Encoder leftEncoder = new Encoder(Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_A/*RGT Constants.leftEncoderPortA.getInt()*/,
-                                            Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_B/*RGT Constants.leftEncoderPortB.getInt()*/,
-                                            false);
-  private Encoder rightEncoder = new Encoder(Jimmy.INPUT_DIGITAL_ENCODER_RIGHT_CHANNEL_A/*RGT Constants.rightEncoderPortA.getInt()*/,
-                                             Jimmy.INPUT_DIGITAL_ENCODER_RIGHT_CHANNEL_B/*RGT Constants.rightEncoderPortB.getInt()*/,
-                                             true);
+//RGT  private Encoder leftEncoder = new Encoder(Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_A/*RGT Constants.leftEncoderPortA.getInt()*/,
+//RGT                                            Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_B/*RGT Constants.leftEncoderPortB.getInt()*/,
+//RGT                                            false);
+//RGT  private Encoder rightEncoder = new Encoder(Jimmy.INPUT_DIGITAL_ENCODER_RIGHT_CHANNEL_A/*RGT Constants.rightEncoderPortA.getInt()*/,
+//RGT                                             Jimmy.INPUT_DIGITAL_ENCODER_RIGHT_CHANNEL_B/*RGT Constants.rightEncoderPortB.getInt()*/,
+//RGT                                             true);
   
   //Solenoids
 //RGT  private Solenoid shifter = new Solenoid(Constants.shifterPort.getInt());
@@ -42,21 +42,21 @@ public class Drivebase extends com.team254.frc2014.subsystems.Drivebase{
   public ChezyGyro gyro;
 
   public void setLeftRightPower(double leftPower, double rightPower) {
-    leftDriveA.set(leftPower);
-    leftDriveB.set(leftPower);
+//RGT    leftDriveA.set(leftPower);
+//RGT    leftDriveB.set(leftPower);
     //RGT leftDriveC.set(leftPower);
-    rightDriveA.set(-rightPower);
-    rightDriveB.set(-rightPower);
+//RGT    rightDriveA.set(-rightPower);
+//RGT    rightDriveB.set(-rightPower);
     //RGT rightDriveC.set(-rightPower);
   }
   //RGT public void setLowgear(boolean low) {
   //RGT   shifter.set(low);
   //RGT }
-  public Drivebase() {
-    super(/*RGT "Drivebase"*/);//RGT the parent will pass in "Drivebase" to the super
-    gyro = new ChezyGyro(Jimmy.INPUT_ANALOG_GYROSCOPE/*RGT Constants.gyroPort.getInt()*/);
-    leftEncoder.start();
-    rightEncoder.start();
+  public DrivebaseTEMPHide() {
+    super(/*RGT "DrivebaseTEMPHide"*/);//RGT the parent will pass in "DrivebaseTEMPHide" to the super
+//RGT    gyro = new ChezyGyro(Jimmy.INPUT_ANALOG_GYROSCOPE/*RGT Constants.gyroPort.getInt()*/);
+//RGT    leftEncoder.start();
+//RGT    rightEncoder.start();
   }
 
   public Hashtable serialize() {
@@ -64,16 +64,16 @@ public class Drivebase extends com.team254.frc2014.subsystems.Drivebase{
     Hashtable rightDrive = new Hashtable();
     Hashtable encoders = new Hashtable();
 
-    leftDrive.put("leftDriveA", new Double(leftDriveA.get()));
-    leftDrive.put("leftDriveB", new Double(leftDriveB.get()));
+//RGT    leftDrive.put("leftDriveA", new Double(leftDriveA.get()));
+//RGT    leftDrive.put("leftDriveB", new Double(leftDriveB.get()));
     //RGT leftDrive.put("leftDriveC", new Double(leftDriveC.get()));
 
-    rightDrive.put("rightDriveA", new Double(rightDriveA.get()));
-    rightDrive.put("rightDriveB", new Double(rightDriveB.get()));
+//RGT    rightDrive.put("rightDriveA", new Double(rightDriveA.get()));
+//RGT    rightDrive.put("rightDriveB", new Double(rightDriveB.get()));
     //RGT rightDrive.put("rightDriveC", new Double(rightDriveC.get()));
 
-    encoders.put("leftEncoder", new Double(leftEncoder.get()));
-    encoders.put("rightEncoder", new Double(rightEncoder.get()));    
+//RGT    encoders.put("leftEncoder", new Double(leftEncoder.get()));
+//RGT    encoders.put("rightEncoder", new Double(rightEncoder.get()));    
     data.put("leftDrive", leftDrive);
     data.put("rightDrive", rightDrive);
     data.put("encoders", encoders);
@@ -81,25 +81,25 @@ public class Drivebase extends com.team254.frc2014.subsystems.Drivebase{
     return data;
   }
 
-  public Encoder getLeftEncoder() {
-    return leftEncoder;
-  }
+//RGT  public Encoder getLeftEncoder() {
+//RGT    return leftEncoder;
+//RGT  }
 
-  public double getLeftEncoderDistance() { // in feet
-    return leftEncoder.get() * LEFT_ENCOCDER_TO_DISTANCE_RATIO;
-  }
+//RGT  public double getLeftEncoderDistance() { // in feet
+//RGT    return leftEncoder.get() * LEFT_ENCOCDER_TO_DISTANCE_RATIO;
+//RGT  }
 
   public double getLeftEncoderDistanceInMeters() {
     return getLeftEncoderDistance() * 0.3048; //TODO
   }
 
-  public Encoder getRightEncoder() {
-    return rightEncoder;
-  }
+//RGT  public Encoder getRightEncoder() {
+//RGT    return rightEncoder;
+//RGT  }
 
-  public double getRightEncoderDistance() {
-    return rightEncoder.get() * RIGHT_ENCOCDER_TO_DISTANCE_RATIO;
-  }
+ //RGT public double getRightEncoderDistance() {
+//RGT    return rightEncoder.get() * RIGHT_ENCOCDER_TO_DISTANCE_RATIO;
+//RGT  }
 
   public double getRightEncoderDistanceInMeters() {
     return getRightEncoderDistance() * 0.3048;
@@ -133,8 +133,8 @@ public class Drivebase extends com.team254.frc2014.subsystems.Drivebase{
   }
   
   public void resetEncoders() {
-    leftEncoder.reset();
-    rightEncoder.reset();
+//RGT    leftEncoder.reset();
+//RGT    rightEncoder.reset();
   }
   
   public void update() {

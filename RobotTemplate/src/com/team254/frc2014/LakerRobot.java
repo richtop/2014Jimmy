@@ -4,12 +4,13 @@ import com.team254.frc2014.controllers.HoldPositionController;
 //RGT import com.team254.lib.OpenLoopController;
 //RGT import com.team254.frc2014.controllers.RpmFlywheelController;
 //RGT import com.team254.frc2014.controllers.SteerableHoldPositionController;
-import com.team5053.frc2014.subsystems.Drivebase;
+import com.team254.frc2014.subsystems.Drivebase;
 import com.team254.frc2014.subsystems.Navigator;
 import com.team254.frc2014.controllers.TrajectoryDriveController;
 //RGT import com.team254.frc2014.hotgoal.BannerHotGoalDetector;
 //RGT import com.team254.frc2014.hotgoal.CheesyVisionHotGoalDetector;
 import com.team254.lib.MultiLooper;
+import com.team5053.frc2014.Jimmy;
 //RGT import edu.wpi.first.wpilibj.AnalogChannel;
 //RGT import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Joystick;
@@ -17,7 +18,7 @@ import edu.wpi.first.wpilibj.Joystick;
 //RGT import edu.wpi.first.wpilibj.Talon;
 
 /**
- * Copied from ChezyRobots. Defines all of the subsystems.
+ * Copied from ChezyRobot. Defines all of the subsystems.
  *
  * @author Tom Bottiglieri (tom@team254.com)
  * @author Richard topolewski 
@@ -52,7 +53,7 @@ public class LakerRobot {
   //RGT public static final CheesyDriveHelper cdh = new CheesyDriveHelper(drivebase);
   
   //RGT public static final BorkedJoystick leftStick = new BorkedJoystick(Constants.leftJoystickPort.getInt());
-  public static final Joystick rightStick = new Joystick(Constants.rightJoystickPort.getInt());
+  public static final Joystick rightStick = new Joystick(/*Jimmy.JOYSTICK_1*/Constants.rightJoystickPort.getInt());
   //RGT public static final OperatorJoystick operatorJoystick = new OperatorJoystick(Constants.gamepadPort.getInt());
   //RGT public static final AutoModeSelector ams = new AutoModeSelector();
 

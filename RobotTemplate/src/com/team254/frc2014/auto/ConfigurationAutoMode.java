@@ -1,5 +1,6 @@
-package com.team254.frc2014;
+package com.team254.frc2014.auto;
 
+import com.team254.frc2014.AutoMode;
 import com.team254.frc2014.AutoModeSelector.Configuration;
 
 /**

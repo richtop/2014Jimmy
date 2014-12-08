@@ -1,5 +1,6 @@
 package com.team254.frc2014;
 
+import com.team254.frc2014.auto.ConfigurationAutoMode;
 import com.team254.frc2014.paths.AutoPaths;
 import java.util.Vector;
 

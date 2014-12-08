@@ -2,11 +2,12 @@ package com.team254.frc2014.subsystems;
 
 import com.team254.frc2014.Constants;
 import com.team254.lib.ChezyGyro;
-import com.team254.lib.Controller;
+//RGT import com.team254.lib.Controller;
 import com.team254.lib.Loopable;
 import com.team254.lib.Subsystem;
+import com.team5053.frc2014.Jimmy;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Solenoid;
+//RGT import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.Hashtable;
@@ -21,37 +22,39 @@ public class Drivebase extends Subsystem implements Loopable {
   public final double RIGHT_ENCOCDER_TO_DISTANCE_RATIO = (3.5 * Math.PI) / (12.0 * 256.0);
   public final double LEFT_ENCOCDER_TO_DISTANCE_RATIO = (3.5 * Math.PI) / (12.0 * 256.0);
   // Speed controllers
-  private Talon leftDriveA = new Talon(Constants.leftDrivePortA.getInt());
-  private Talon leftDriveB = new Talon(Constants.leftDrivePortB.getInt());
-  private Talon leftDriveC = new Talon(Constants.leftDrivePortC.getInt());
-  private Talon rightDriveA = new Talon(Constants.rightDrivePortA.getInt());
-  private Talon rightDriveB = new Talon(Constants.rightDrivePortB.getInt());
-  private Talon rightDriveC = new Talon(Constants.rightDrivePortC.getInt());
+  private Talon leftDriveA = /*Jimmy.leftDriveA;*/new Talon(/*Jimmy.PWM_LEFT_MOTOR_1*/Constants.leftDrivePortA.getInt());
+  private Talon leftDriveB = /*Jimmy.leftDriveB;*/ new Talon(/*Jimmy.PWM_LEFT_MOTOR_2*/Constants.leftDrivePortB.getInt());
+//RGT  private Talon leftDriveC = new Talon(Constants.leftDrivePortC.getInt());
+  private Talon rightDriveA = /*Jimmy.rightDriveA;*/ new Talon(/*Jimmy.PWM_RIGHT_MOTOR_1*/Constants.rightDrivePortA.getInt());
+  private Talon rightDriveB = /*Jimmy.rightDriveB;*/ new Talon(/*Jimmy.PWM_RIGHT_MOTOR_2*/Constants.rightDrivePortB.getInt());
+//RGT  private Talon rightDriveC = new Talon(Constants.rightDrivePortC.getInt());
   //Encoders
-  private Encoder leftEncoder = new Encoder(Constants.leftEncoderPortA.getInt(),
-          Constants.leftEncoderPortB.getInt(), false);
-  private Encoder rightEncoder = new Encoder(Constants.rightEncoderPortA.getInt(),
-          Constants.rightEncoderPortB.getInt(), true);
+  private Encoder leftEncoder = new Encoder(/*Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_A*/ Constants.leftEncoderPortA.getInt(),
+                                            /*Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_B */Constants.leftEncoderPortB.getInt(), 
+                                            false);
+  private Encoder rightEncoder = new Encoder(/*Jimmy.INPUT_DIGITAL_ENCODER_RIGHT_CHANNEL_A */Constants.rightEncoderPortA.getInt(),
+                                             /*Jimmy.INPUT_DIGITAL_ENCODER_RIGHT_CHANNEL_B */Constants.rightEncoderPortB.getInt(),
+                                             true);
   
   //Solenoids
-  private Solenoid shifter = new Solenoid(Constants.shifterPort.getInt());
+//RGT  private Solenoid shifter = new Solenoid(Constants.shifterPort.getInt());
   //Gyro
   public ChezyGyro gyro;
 
   public void setLeftRightPower(double leftPower, double rightPower) {
     leftDriveA.set(leftPower);
     leftDriveB.set(leftPower);
-    leftDriveC.set(leftPower);
+//RGT    leftDriveC.set(leftPower);
     rightDriveA.set(-rightPower);
     rightDriveB.set(-rightPower);
-    rightDriveC.set(-rightPower);
-  }
-  public void setLowgear(boolean low) {
-    shifter.set(low);
+//RGT    rightDriveC.set(-rightPower);
   }
   public Drivebase() {
     super("Drivebase");
-    gyro = new ChezyGyro(Constants.gyroPort.getInt());
+//  System.out.println("Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_A"+Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_A+
+//  "   Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_B="+Jimmy.INPUT_DIGITAL_ENCODER_LEFT_CHANNEL_B);
+
+    gyro = new ChezyGyro(/*Jimmy.INPUT_ANALOG_GYROSCOPE*/Constants.gyroPort.getInt());
     leftEncoder.start();
     rightEncoder.start();
   }
@@ -63,11 +66,11 @@ public class Drivebase extends Subsystem implements Loopable {
 
     leftDrive.put("leftDriveA", new Double(leftDriveA.get()));
     leftDrive.put("leftDriveB", new Double(leftDriveB.get()));
-    leftDrive.put("leftDriveC", new Double(leftDriveC.get()));
+//RGT    leftDrive.put("leftDriveC", new Double(leftDriveC.get()));
 
     rightDrive.put("rightDriveA", new Double(rightDriveA.get()));
     rightDrive.put("rightDriveB", new Double(rightDriveB.get()));
-    rightDrive.put("rightDriveC", new Double(rightDriveC.get()));
+//RGT    rightDrive.put("rightDriveC", new Double(rightDriveC.get()));
 
     encoders.put("leftEncoder", new Double(leftEncoder.get()));
     encoders.put("rightEncoder", new Double(rightEncoder.get()));    
